@@ -1,0 +1,89 @@
+/* ==========================================================
+   HERO CHOCOBREM — desain asli (djarubang-hero-v9).
+   Perubahan hanya teknis: selector di-scope ke .hero agar tidak
+   bentrok dengan halaman lain, drip SVG dipindah ke file terpisah.
+   ========================================================== */
+
+:root{--cb-red:#572B20;--cb-brown:#4A2B20;--cb-cream:#FFF3E6;--cb-tan:#e9c98f;
+--tw:clamp(380px,100vw,960px);--bg1:#DDB693;--bg2:#BC8E66;--glow:#FFF3E6;--choc:#4A2B20;--cream:#FFF3E6;--btn:#572B20;--panel:#FFF3E6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.hero{font-family:"Baloo 2","Nunito","Trebuchet MS",system-ui,sans-serif;color:var(--choc)}
+.hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:2vw;
+ padding:calc(var(--tw)*.22 + 10px) 6vw 130px;background:radial-gradient(ellipse at 72% 50%,rgba(255,243,230,.45) 0,rgba(255,243,230,0) 58%),linear-gradient(120deg,var(--bg1) 0%,#CDA37C 48%,var(--bg2) 100%)}
+.hero .drip{position:absolute;top:0;left:0;width:100%;height:calc(var(--tw)*0.253);z-index:2;pointer-events:none;background:url("../assets/hero-drip.svg") repeat-x 0 0/calc(var(--tw)*2) 100%;filter:drop-shadow(0 7px 5px rgba(70,35,15,.35))}
+.hero .wave{position:absolute;bottom:0;left:0;width:100%;height:clamp(80px,10vw,170px);z-index:2;pointer-events:none;filter:drop-shadow(0 -4px 5px rgba(70,35,15,.22))}
+.hero .tagline{position:absolute;z-index:4;top:calc(var(--tw)*.014);left:0;right:0;text-align:center;font-family:Pacifico,cursive;color:var(--cream);font-size:clamp(18px,1.8vw,28px);text-shadow:0 2px 0 rgba(30,12,5,.5)}
+.hero .copy{position:relative;z-index:3}
+.hero .kicker{font-weight:800;font-size:clamp(16px,1.7vw,24px);letter-spacing:.02em;margin:0 0 2px}
+.hero h1{margin:0;line-height:1.08;font-family:Pacifico,cursive;font-weight:400;font-size:clamp(56px,9.5vw,150px);color:var(--choc);animation:pop .9s cubic-bezier(.3,1.6,.5,1) both;
+ text-shadow:-3px -3px 0 var(--cream),3px -3px 0 var(--cream),-3px 3px 0 var(--cream),3px 3px 0 var(--cream),0 6px 0 rgba(120,70,40,.28)}
+@supports (paint-order:stroke fill){.hero h1{-webkit-text-stroke:.085em var(--cream);paint-order:stroke fill;text-shadow:0 .04em 0 rgba(120,70,40,.3)}}
+.hero h1 span{position:relative;display:inline-block}
+.hero h1{padding-bottom:.3em}
+.hero .sub{margin:20px 0 0;max-width:34em;font-weight:600;font-size:clamp(17px,1.7vw,26px);line-height:1.45}
+.hero .chips{position:relative;display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero .chips span{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(180deg,#FFF3E6,#F5E0C6);color:var(--choc);font-weight:800;font-size:clamp(15px,1.3vw,19px);
+ padding:9px 18px;border-radius:99px;box-shadow:0 4px 10px rgba(110,65,35,.28),inset 0 1px 0 #fff}
+.hero .chips span svg{width:22px;height:22px;flex:none}
+.hero .cta{position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:32px;padding:16px 36px;border-radius:99px;text-decoration:none;color:var(--cream);font-weight:800;
+ font-size:clamp(18px,1.6vw,24px);background:linear-gradient(180deg,#63352A,#572B20);box-shadow:0 6px 0 #3A211B,0 14px 22px rgba(60,30,15,.28);transition:transform .12s}
+.hero .cta:hover{transform:translateY(-2px)}.hero .cta:active{transform:translateY(3px);box-shadow:0 2px 0 #3A211B}.hero .cta>svg:not(.spl){width:22px;height:22px}
+.hero .right{position:relative;z-index:3;display:flex;justify-content:center}
+#chocobrem-mascot{--m:min(44vw,max(340px,calc(100svh - 500px)),620px);display:flex;flex-direction:column;align-items:center;user-select:none;-webkit-tap-highlight-color:transparent}
+.hero .rays{position:absolute;left:50%;top:50%;width:170%;aspect-ratio:1;margin:-85% 0 0 -85%;border-radius:50%;pointer-events:none;
+ background:repeating-conic-gradient(rgba(190,120,60,.12) 0 10deg,transparent 10deg 20deg);animation:spin 40s linear infinite;
+ -webkit-mask:radial-gradient(circle,#000 18%,transparent 62%);mask:radial-gradient(circle,#000 18%,transparent 62%)}
+.hero .halo{position:absolute;inset:-6% -14% 2%;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,250,240,.9),rgba(255,250,240,0) 66%);animation:glow 2.6s ease-in-out infinite}
+@keyframes pop{from{transform:scale(.4) rotate(-6deg);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes glow{50%{transform:scale(1.07);opacity:.8}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(var(--r0,-8deg))}50%{transform:translateY(-22px) rotate(var(--r1,10deg))}}
+@keyframes bob{50%{translate:0 -8px}}
+@media (max-width:860px){
+ .hero{grid-template-columns:1fr;text-align:center;padding:calc(var(--tw)*.25 + 14px) 6vw 120px;gap:18px}
+ .hero .sub{margin-left:auto;margin-right:auto}.hero .chips{justify-content:center}
+ #chocobrem-mascot{--m:min(86vw,420px)}.hero .right{order:2}.hero .copy{order:1}
+}
+@media (prefers-reduced-motion:reduce){.hero .rays,.halo,.hero h1{animation:none!important}.hero .crumbs{display:none}}
+/* ---- Speech bubble ---- */
+.cb-bubble{position:relative;box-sizing:border-box;width:min(92vw,460px);min-height:5.2em;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:14px 22px;background:var(--cb-cream);color:var(--cb-brown);
+  border:4px solid var(--cb-brown);border-radius:28px;
+  box-shadow:0 6px 0 var(--cb-red),0 12px 22px rgba(107,42,26,.22);
+  font-weight:800;font-size:clamp(16px,4.4vw,24px);line-height:1.25;
+  animation:cb-float 3.2s ease-in-out infinite}
+.cb-bubble::after{content:"";position:absolute;left:50%;bottom:-15px;width:22px;height:22px;
+  background:var(--cb-cream);border-right:4px solid var(--cb-brown);border-bottom:4px solid var(--cb-brown);
+  border-bottom-right-radius:6px;transform:translateX(-50%) rotate(45deg)}
+.cb-bubble .cb-text{transition:opacity .28s ease,transform .28s cubic-bezier(.3,1.4,.5,1)}
+.cb-bubble.cb-swap .cb-text{opacity:0;transform:translateY(8px) scale(.94)}
+.cb-bubble b{color:var(--cb-red)}
+@keyframes cb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ---- Stage & layers ---- */
+.cb-stage{position:relative;width:var(--m);height:var(--m);margin-top:calc(var(--m)*.05);cursor:pointer}
+.cb-layer{position:absolute;inset:0;pointer-events:none;will-change:transform}
+.cb-layer img{position:absolute;display:block;-webkit-user-drag:none}
+.cb-shadow{position:absolute;left:29%;width:42%;bottom:1.2%;height:5%;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(90,45,25,.40),rgba(90,45,25,0) 70%)}
+.cb-fx{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.cb-heart{position:absolute;color:#e5383b;font-size:calc(var(--m)*.07);line-height:1;opacity:0;
+  animation:cb-rise 1.9s ease-out forwards}
+@keyframes cb-rise{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:1}
+  100%{opacity:0;transform:translate(var(--dx),-45%) scale(1.25)}}
+
+@media (prefers-reduced-motion:reduce){.cb-bubble{animation:none}}
+
+.cb-bubble{box-shadow:0 6px 0 #572B20,0 12px 22px rgba(107,42,26,.22)}
+
+/* ---- Remahan cokelat & brem naik dari bawah ---- */
+.hero .crumbs{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero .crumb{position:absolute;bottom:0;left:var(--x);width:var(--s);height:var(--s);opacity:0;
+ filter:drop-shadow(0 2px 1.5px rgba(58,33,27,.35));animation:crumb-up var(--d) linear var(--dl) infinite}
+.hero .crumb i{display:block;width:100%;height:100%;background:var(--c);clip-path:var(--p)}
+.hero .crumb.brem i{background:linear-gradient(135deg,#FFF3E6 30%,#EBD2AE)}
+@keyframes crumb-up{0%{opacity:0;transform:translate(0,0) rotate(0)}
+ 10%{opacity:.95}
+ 75%{opacity:.9}
+ 100%{opacity:0;transform:translate(var(--dx),calc(var(--h)*-1)) rotate(var(--r))}}
